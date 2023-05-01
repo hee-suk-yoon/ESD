@@ -1,3 +1,3 @@
 # ESD
 
-Code will be updated soon!
+Training Code will be updated soon!
