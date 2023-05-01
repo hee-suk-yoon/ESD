@@ -1,3 +1,3 @@
 # ESD
 
-Training Code will be updated soon!
+Training Script will be updated soon.
