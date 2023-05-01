@@ -8,7 +8,7 @@ import math
 import torch
 
 
-def soft_cal_1(num_bins, confidences, correct,T,device):
+def SBECE(num_bins, confidences, correct,T,device):
     N = len(confidences)
     m = num_bins
 
@@ -37,7 +37,7 @@ def soft_cal_1(num_bins, confidences, correct,T,device):
     return (1/N* torch.sum(temp_matrix))**(1/2)
 
 
-def MMCE_Loss_unweighted(device, confidence, correct, kernel_theta = 0.4):
+def MMCE_unweighted(device, confidence, correct, kernel_theta = 0.4):
     n = len(correct)
     A = confidence.view(1,n).expand(n,n)
     A_T = A.T
@@ -50,7 +50,7 @@ def MMCE_Loss_unweighted(device, confidence, correct, kernel_theta = 0.4):
         ipdb.set_trace()
     return MMCE_m
 
-def ESD_unweighted_unbiased_new(device, confidence1, correct):
+def ESD(device, confidence1, correct):
     N1 = len(confidence1) #
     val = correct.float() - confidence1 # 
     val = val.view(1,N1) 
