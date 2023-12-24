@@ -5,7 +5,7 @@
 ![](figure/esd.jpg)
 
 ## Requirements 
-A suitable conda environment named subject-diffusion can be created and activated with:
+A suitable conda environment named esd can be created and activated with:
 ```
 conda env create -f environment.yaml
 conda activate esd
