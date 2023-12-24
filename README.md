@@ -1,4 +1,4 @@
-# ESD: Expected Squared Difference as a Tuning-Free Trainable Calibration Measure
+# ESD: Expected Squared Difference as a Tuning-Free Trainable Calibration Measure (ICLR 2023)
 
 [[Paper](https://openreview.net/forum?id=bHW9njOSON)]
 ![](figure/esd.jpg)
