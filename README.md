@@ -1,6 +1,6 @@
 # ESD: Expected Squared Difference as a Tuning-Free Trainable Calibration Measure
 
-[[Paper Link](https://openreview.net/forum?id=bHW9njOSON)]
+[[Paper](https://openreview.net/forum?id=bHW9njOSON)]
 ![](figure/esd.jpg)
 
 ## Requirements 
