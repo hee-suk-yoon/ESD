@@ -1,5 +1,8 @@
 # ESD: Expected Squared Difference as a Tuning-Free Trainable Calibration Measure
 
+[[Paper Link](https://openreview.net/forum?id=bHW9njOSON)]
+![](figure/esd.jpg)
+
 ## Requirements 
 A suitable conda environment named subject-diffusion can be created and activated with:
 ```
