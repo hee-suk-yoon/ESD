@@ -22,6 +22,9 @@ Prepare ImageNet-100 dataset based on the following link https://github.com/dani
 CUDA_VISIBLE_DEVICES=0 bash script/baseline.sh
 ```
 
+## Acknowledgement
+This work was supported by Institute of Information & communications Technology Planning & Evaluation (IITP) grant funded by the Korea government(MSIT) (No.2022-0-00184, Development and Study of AI Technologies to Inexpensively Conform to Evolving Policy on Ethics), and Institute for Information & communications Technology Promotion(IITP) grant funded by the Korea gov- ernment(MSIT) (No. 2021-0-01381, Development of Causal AI through Video Understanding and Reinforcement Learning, and Its Applications to Real Environments).
+
 ## Citation
 If you find our work useful in your research, please cite:
 ```
