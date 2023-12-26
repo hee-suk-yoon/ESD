@@ -49,17 +49,17 @@ def MMCE_unweighted(confidence, correct, kernel_theta = 0.4):
     return MMCE_m
 
 def ESD(device, confidence1, correct):
-    N1 = len(confidence1) #
-    val = correct.float() - confidence1 # 
+    N1 = len(confidence1) 
+    val = correct.float() - confidence1 
     val = val.view(1,N1) 
     mask = torch.ones(N1,N1) - torch.eye(N1)
     mask = mask.to(device)
-    confidence1_matrix = confidence1.expand(N1,N1) #row copying
+    confidence1_matrix = confidence1.expand(N1,N1)
     temp = (confidence1.view(1,N1).T).expand(N1,N1)
     tri = torch.le(confidence1_matrix,temp).float() 
     val_matrix = val.expand(N1,N1)
     x_matrix = torch.mul(val_matrix,tri)*mask
-    mean_row = torch.sum(x_matrix, dim = 1)/(N1-1) #gbar _i
+    mean_row = torch.sum(x_matrix, dim = 1)/(N1-1)
     x_matrix_squared = torch.mul(x_matrix, x_matrix)
     var = 1/(N1-2) * torch.sum(x_matrix_squared,dim=1) - (N1-1)/(N1-2) * torch.mul(mean_row,mean_row)
     d_k_sq_vector = torch.mul(mean_row, mean_row) - var/(N1-1)
