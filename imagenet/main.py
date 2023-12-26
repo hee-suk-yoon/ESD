@@ -396,7 +396,7 @@ def main_worker(gpu, ngpus_per_node, args):
 		if epoch % 1 == 0:
 			print('start logging')
 			logits_list, labels_list = postprocess_preprocess(args, model, device, val_dataloader)
-			T = tempscale_train(args, model, device, logits_list, labels_list)
+			T = tempscale_train(logits_list, labels_list)
 			w,b = plattscale_train(args, model, device, logits_list, labels_list, num_class = num_class)
 			with torch.no_grad():
 				test_accuracy, test_accuracy_vs, ece_test, ece_test_tempscale, ece_test_vs, val_accuracy, ece_val = log_wandb_imagenet(model, val_dataloader, test_dataloader, device, T, w, b)
@@ -404,7 +404,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
 			print('end logging')
 		
-def tempscale_train(args, model, device, logits_list, labels_list):
+def tempscale_train(logits_list, labels_list):
 
 	#load saved model
 	def T_scaling(logits, temperature):
