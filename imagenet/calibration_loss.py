@@ -46,8 +46,6 @@ def MMCE_unweighted(confidence, correct, kernel_theta = 0.4):
     val =  (A-correct_matrix)*(A.T-correct_matrix.T)*(kernel_matrix)
     
     MMCE_m = torch.sum(val/n**2)
-    if MMCE_m < 0:
-        ipdb.set_trace()
     return MMCE_m
 
 def ESD(device, confidence1, correct):
