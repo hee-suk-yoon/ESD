@@ -68,7 +68,6 @@ def ESD(device, confidence1, correct):
     return reg_loss
 
 def ECE_Loss(num_bins, predictions, confidences, correct):
-    #ipdb.set_trace()
     bin_boundaries = torch.linspace(0, 1, num_bins + 1)
     bin_lowers = bin_boundaries[:-1]
     bin_uppers = bin_boundaries[1:]
@@ -77,14 +76,12 @@ def ECE_Loss(num_bins, predictions, confidences, correct):
     bin_num_sample = [0]*num_bins
 
     for idx in range(len(predictions)):
-        #prediction = predictions[idx]
         confidence = confidences[idx]
         bin_idx = -1
         for bin_lower, bin_upper in zip(bin_lowers, bin_uppers):
             bin_idx += 1 
             bin_lower = bin_lower.item()
             bin_upper = bin_upper.item()
-            #if bin_lower <= confidence and confidence < bin_upper:
             if bin_lower < confidence and confidence <= bin_upper:
                 bin_num_sample[bin_idx] += 1
                 bin_accuracy[bin_idx] += correct[idx]
