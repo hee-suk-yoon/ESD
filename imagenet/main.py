@@ -394,7 +394,6 @@ def main_worker(gpu, ngpus_per_node, args):
 
 		num_class = output.size(1)
 		if epoch % 1 == 0:
-			print(epoch)
 			print('start logging')
 			logits_list, labels_list = postprocess_preprocess(args, model, device, val_dataloader)
 			T = tempscale_train(args, model, device, logits_list, labels_list)
