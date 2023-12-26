@@ -385,7 +385,7 @@ def main_worker(gpu, ngpus_per_node, args):
 						calterm = SBECE(args.loss_bin, confidence_calset, correct_calset, args.T, device)
 						loss += lamda * calterm
 					elif args.loss == 'ce+mmce':
-						calterm = MMCE_unweighted(device, confidence_calset, correct_calset, kernel_theta=args.theta)
+						calterm = MMCE_unweighted(confidence_calset, correct_calset, kernel_theta=args.theta)
 						loss += lamda * torch.sqrt(calterm)
 
 			scaler.scale(loss).backward()
