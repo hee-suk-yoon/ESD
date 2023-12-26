@@ -395,7 +395,7 @@ def main_worker(gpu, ngpus_per_node, args):
 		num_class = output.size(1)
 		if epoch % 1 == 0:
 			print('start logging')
-			logits_list, labels_list = postprocess_preprocess(args, model, device, val_dataloader)
+			logits_list, labels_list = postprocess_preprocess(model, device, val_dataloader)
 			T = tempscale_train(logits_list, labels_list)
 			w,b = plattscale_train(logits_list, labels_list, num_class = num_class)
 			with torch.no_grad():
@@ -422,7 +422,7 @@ def tempscale_train(logits_list, labels_list):
 
 	return temperature
 
-def postprocess_preprocess(args, model, device, val_dataloader):
+def postprocess_preprocess(model, device, val_dataloader):
 	logits_list = []
 	labels_list = []
 
