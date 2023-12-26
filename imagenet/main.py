@@ -406,14 +406,6 @@ def main_worker(gpu, ngpus_per_node, args):
 
 			print('end logging')
 		
-	
-class Summary(Enum):
-	NONE = 0
-	AVERAGE = 1
-	SUM = 2
-	COUNT = 3
-
-
 class ProgressMeter(object):
 	def __init__(self, num_batches, meters, prefix=""):
 		self.batch_fmtstr = self._get_batch_fmtstr(num_batches)
