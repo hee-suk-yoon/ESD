@@ -382,7 +382,7 @@ def main_worker(gpu, ngpus_per_node, args):
 						calterm = ESD(device, confidence_calset, correct_calset)
 						loss += lamda * torch.sqrt(torch.nn.functional.relu(calterm))
 					elif args.loss == 'ce+sbece':
-						calterm = SBECE(args.loss_bin, confidence_calset, correct_calset, args.T, device)
+						calterm = SBECE(args.loss_bin, confidence_calset, correct_calset, args.T)
 						loss += lamda * calterm
 					elif args.loss == 'ce+mmce':
 						calterm = MMCE_unweighted(confidence_calset, correct_calset, kernel_theta=args.theta)
