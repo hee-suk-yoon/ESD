@@ -126,7 +126,6 @@ def log_wandb_imagenet(model, val_dataloader, test_dataloader, device, T, w, b):
             num_class = output.size(1)
             output_platt = softmax_layer(torch.bmm((torch.diag(w).unsqueeze(0)).expand(logits.size(0),num_class,num_class),logits.unsqueeze(2)).view(logits.size(0),-1) + b.unsqueeze(0).expand(logits.size(0),-1))
             output_temperature = softmax_layer(logits/T)
-            # print(output)
 
             confidence_temp,prediction_temp = torch.max(output, dim = 1)
             confidence_temp_platt, prediction_temp_platt = torch.max(output_platt, dim = 1)
@@ -136,7 +135,6 @@ def log_wandb_imagenet(model, val_dataloader, test_dataloader, device, T, w, b):
             confidence_temp = confidence_temp.cpu()
             
             prediction_temp_platt = prediction_temp_platt.cpu()
-            #prediction_temp_temperature = prediction_temp_temperature.cpu()
 
             label = label.cpu()
 
@@ -172,7 +170,6 @@ def log_wandb_imagenet(model, val_dataloader, test_dataloader, device, T, w, b):
             label = label.to(device)
             logits = model(image)
             output = softmax_layer(logits)
-            # print(output)
 
             confidence_temp,prediction_temp = torch.max(output, dim = 1)
 
@@ -191,10 +188,6 @@ def log_wandb_imagenet(model, val_dataloader, test_dataloader, device, T, w, b):
     ece_val = ECE_Loss(20,predictions,confidence, correct)            
 
     return test_accuracy, test_accuracy_platt, ece_test[0], ece_test_tempscale[0], ece_test_platt[0], val_accuracy, ece_val[0]
-
-
-
-
 
 
 
