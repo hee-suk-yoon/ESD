@@ -12,13 +12,13 @@ def SBECE(num_bins, confidences, correct,T,device):
     N = len(confidences)
     m = num_bins
 
-    bin_boundaries = torch.linspace(0, 1, num_bins + 1) #
-    bin_space = ((bin_boundaries[1] - bin_boundaries[0])/2) #
-    bin_center_temp = bin_boundaries + bin_space #
-    bin_center = bin_center_temp[:-1] #
+    bin_boundaries = torch.linspace(0, 1, num_bins + 1) 
+    bin_space = ((bin_boundaries[1] - bin_boundaries[0])/2) 
+    bin_center_temp = bin_boundaries + bin_space 
+    bin_center = bin_center_temp[:-1] 
     r_hat = confidences.view(1,N)
     r_hat_matrix = r_hat.expand(m,N)
-    epsilon_hat = bin_center.view(m,1) #
+    epsilon_hat = bin_center.view(m,1) 
     epsilon_hat_matrix = epsilon_hat.expand(m,N).to(device)
 
     columnwise_softmax = torch.nn.Softmax(dim=0)
