@@ -518,7 +518,6 @@ def tempscale_train(args, model, device, logits_list, labels_list):
 		loss = criterion(T_scaling(logits_list, temperature), labels_list)
 		loss.backward()
 		return loss
-	#ipdb.set_trace()
 	optimizer.step(_eval)
 
 	return temperature
@@ -546,7 +545,6 @@ def plattscale_train(args, model, device, logits_list, labels_list, num_class):
 	def T_scaling(logits, w, b):
 		#return torch.div(logits, temperature)  
 		return torch.bmm((torch.diag(w).unsqueeze(0)).expand(logits.size(0),num_class,num_class),logits.unsqueeze(2)).view(logits.size(0),-1) + b.unsqueeze(0).expand(logits.size(0),-1)
-	#ipdb.set_trace()
 	#w_parameter = torch.diag(torch.nn.Parameter(torch.ones(num_class).cuda()))
 	w_parameter = torch.nn.Parameter(torch.ones(num_class).cuda())
 	b_parameter = torch.nn.Parameter(torch.ones(num_class).cuda())
