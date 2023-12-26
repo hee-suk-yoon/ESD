@@ -37,7 +37,7 @@ def SBECE(num_bins, confidences, correct,T,device):
     return (1/N* torch.sum(temp_matrix))**(1/2)
 
 
-def MMCE_unweighted(device, confidence, correct, kernel_theta = 0.4):
+def MMCE_unweighted(confidence, correct, kernel_theta = 0.4):
     n = len(correct)
     A = confidence.view(1,n).expand(n,n)
     A_T = A.T
