@@ -99,7 +99,7 @@ def ECE_Loss(num_bins, predictions, confidences, correct):
 
     return ece_loss, bin_accuracy, bin_confidence, bin_num_sample
     
-def log_wandb_imagenet(args, model, val_dataloader, test_dataloader, device, T, w, b):
+def log_wandb_imagenet(model, val_dataloader, test_dataloader, device, T, w, b):
     total_correct = 0
     total_correct_platt = 0
     softmax_layer = torch.nn.Softmax(dim=1)

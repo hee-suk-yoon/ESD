@@ -400,7 +400,7 @@ def main_worker(gpu, ngpus_per_node, args):
 			T = tempscale_train(args, model, device, logits_list, labels_list)
 			w,b = plattscale_train(args, model, device, logits_list, labels_list, num_class = num_class)
 			with torch.no_grad():
-				test_accuracy, test_accuracy_vs, ece_test, ece_test_tempscale, ece_test_vs, val_accuracy, ece_val = log_wandb_imagenet(args, model, val_dataloader, test_dataloader, device, T, w, b)
+				test_accuracy, test_accuracy_vs, ece_test, ece_test_tempscale, ece_test_vs, val_accuracy, ece_val = log_wandb_imagenet(model, val_dataloader, test_dataloader, device, T, w, b)
 			wandb.log({"Epoch": epoch, "Test Accuracy": test_accuracy, "Test Accuracy VS": test_accuracy_vs, "ECE Test": ece_test, "ECE Test TempScale": ece_test_tempscale, "ECE Test VS": ece_test_vs, "Val Accuracy": val_accuracy, "ECE Val": ece_val})
 
 			print('end logging')
